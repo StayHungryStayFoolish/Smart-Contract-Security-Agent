@@ -9,7 +9,7 @@
       "post": {
         "summary": "Query smart contract knowledge",
         "requestBody": {
-          "required": True,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -53,7 +53,7 @@
       "post": {
         "summary": "Analyze smart contract code",
         "requestBody": {
-          "required": True,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
