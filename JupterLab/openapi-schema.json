@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Smart Contract Analysis API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/query": {
+      "post": {
+        "summary": "Query smart contract knowledge",
+        "requestBody": {
+          "required": True,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query_type": {
+                    "type": "string",
+                    "enum": ["design", "development", "vulnerability"]
+                  },
+                  "question": {
+                    "type": "string"
+                  }
+                },
+                "required": ["query_type", "question"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Query response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "analysis": {"type": "string"},
+                    "recommendations": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/code_analyze": {
+      "post": {
+        "summary": "Analyze smart contract code",
+        "requestBody": {
+          "required": True,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {"type": "string"},
+                  "analysis_type": {
+                    "type": "string",
+                    "enum": ["security", "optimization", "best_practices"]
+                  }
+                },
+                "required": ["code"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Code analysis response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "security_analysis": {"type": "string"},
+                    "vulnerabilities": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    },
+                    "recommendations": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
